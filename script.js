@@ -2,18 +2,25 @@ let endpoint=`http://www.omdbapi.com/?i=tt3896198&apikey=d6f8fa89`
 let container=document.getElementById("container")
 
 async function imdbDetails(){
-    let response=await fetch(endpoint,{method:"GET"})
-    let result=await response.json();
-    console.log(result)
-    for(let i=0;i<20;i++){
-        addDataOnUI(result)
+    try{
+        let response=await fetch(endpoint,{method:"GET"})
+        let result=await response.json();
+        console.log(result)
+        for(let i=0;i<20;i++){
+            addDataOnUI(result)
+        }
+        
+        // console.log(result.Title)
+        // console.log(result.Year)
+        // console.log(result.Rated)
+        // console.log(result.Released)
+        // console.log(result.Ratings)
+        
     }
-    
-    // console.log(result.Title)
-    // console.log(result.Year)
-    // console.log(result.Rated)
-    // console.log(result.Released)
-    // console.log(result.Ratings)
+    catch(e){
+        console.log(e)
+    }
+   
 }
 imdbDetails()
 
